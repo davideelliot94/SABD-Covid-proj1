@@ -211,7 +211,7 @@ public class Query2 {
          */
 
 
-        JavaPairRDD<Tuple2<Integer,String>, Tuple4<Double,Double,Double,Double>> meanVarRDD = rddByWeek.mapToPair(
+        JavaPairRDD<Tuple2<Integer,String>, Tuple4<Double,Double,Double,Double>> resultsRaw = rddByWeek.mapToPair(
                 (Tuple2<Tuple2<Integer, String>, List<Double>> t) ->{
 
 
@@ -232,7 +232,7 @@ public class Query2 {
          * PREPARE STRING RDD TO SAVE RESULTS SORTED LEXICOGRAPHICALLY
          */
 
-        JavaRDD<String> results = meanVarRDD.map(
+        JavaRDD<String> results = resultsRaw.map(
                 (Tuple2<Tuple2<Integer, String>, Tuple4<Double, Double, Double, Double>> t) -> {
 
                     String mean = new DecimalFormat("##.##").format(t._2()._1());
