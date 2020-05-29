@@ -1,0 +1,24 @@
+Il dataset nazionale utilizzato per la prima query è relativo al giorno 06-05-20
+Il dataset globale utilizzato per la seconda query è relativo al giorno 11-05-20
+
+Nel secondo dataset sono stati sostituiti i nomi di alcune nazioni con il nome esteso o con il loro codice ISO,
+poichè esse non venivano riconosciute da Java.util.Locale, ad esempio:
+
+"Czechia" -> "Czech Republic",
+"North Macedonia" -> "MK"
+
+Le settimane sono considerate , per entrambe le query, a partire dal Lunedì e vengono numerate , tramite "Locale", a partire dalla prima settimana dell'anno che abbia almeno 4 giorni.
+
+Per eseguire l'applicazione sono forniti due script "runLocal.sh" e "runEMR.sh".
+
+runLocal.sh -> esegue le due query eliminando le cartelle di output prima dell'esecuzione e specificando "local" come argomento all'applicazione.
+
+runEMR.sh -> esegue le due query eliminando le cartelle di output dall'hdfs prima dell'esecuzione e specificando "EMR" come argomento dell'applicazione.
+
+Per il run su cluster EMR:
+
+Caricare la cartella "SABD_Project1" sul cluster e avviare l'applicazione utilizzando lo script "runEMR.sh"
+L'applicazione carichera un apposito file ".properties" e accederà ai file di input caricati su un bucket S3 con accesso publico,
+al termine dell'esecuzione i file di output sono caricati direttamente sull'hdfs dall'applicazione
+
+
